@@ -211,6 +211,9 @@ class _HomePageState extends State<HomePage> {
                               },
                               {
                                 "image": dataModel!.data![index].image,
+                              },
+                              {
+                                'slug' : dataModel!.data![index].slug,
                               }
                             ]);
                           },

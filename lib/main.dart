@@ -1,9 +1,11 @@
+import 'package:best_status/bindings/all_bindings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'pages/homePage.dart';
 
 void main() {
+  AllBindings().dependencies();
   runApp(const MyApp());
 }
 
