@@ -1,10 +1,14 @@
 import 'package:best_status/controllers/details_controller.dart';
+import 'package:best_status/helper/detailsHelper.dart';
 import 'package:best_status/pages/appStyle.dart/appStyle.dart';
+import 'package:best_status/services/api_services.dart';
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
+
+import '../model/detailsModel.dart';
 
 class DetailsPage extends StatefulWidget {
   @override
@@ -12,18 +16,18 @@ class DetailsPage extends StatefulWidget {
 }
 
 class _DetailsPageState extends State<DetailsPage> {
-  final controller = Get.put(DetailsController());
   var data = Get.arguments;
+  final controller = Get.put(DetailsController());
 
   @override
   void initState() {
-    super.initState();
-    print(data[2]['slug']);
     controller.getData(data[2]['slug']);
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    print(data[2]['slug']);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.indigo,
@@ -36,16 +40,9 @@ class _DetailsPageState extends State<DetailsPage> {
             child: CircularProgressIndicator(),
           );
         } else {
-          return controller.detailsData.value.data!.length == 0 ||
-                  controller.detailsData.value.data!.isEmpty
+          return controller.detailsData.value.data!.isEmpty
               ? Center(
-                  child: Text(
-                    'No Data Found!',
-                    style: TextStyle(
-                        color: Colors.red,
-                        fontSize: 30,
-                        fontWeight: FontWeight.w700),
-                  ),
+                  child: Text('No Data'),
                 )
               : ListView.builder(
                   itemCount: controller.detailsData.value.data!.length,
