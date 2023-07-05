@@ -58,6 +58,7 @@ class _DetailsPageState extends State<DetailsPage> {
                                 Colors.black,
                                 Colors.indigo,
                               ],
+                              //
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight),
                           borderRadius: BorderRadius.circular(6),
